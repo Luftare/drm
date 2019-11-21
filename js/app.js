@@ -1,5 +1,4 @@
 window.onload = boot;
-log('js runs');
 
 const state = {
   currentInstrument: '',
@@ -14,30 +13,17 @@ const dom = {
   VUHandAnimationTimeout: 0,
 };
 
-function log(txt) {
-  const msg = document.createElement('li');
-  msg.innerHTML = txt;
-  document.getElementById('log').appendChild(msg);
-}
-
 function boot() {
-  log('start boot');
   registerServiceWorker();
   initDom();
 }
 
 async function initDom() {
-  log('initting dom');
   const instruments = await getInstrumentsFromAPI();
-  log('instruments: ' + instruments.join(' '));
   selectInstrument(instruments[0]);
-  log('Selecting instrument');
   createInstrumentOptions(instruments);
-  log('created options');
   setVULevel(0);
-  log('VU levels');
   createPads();
-  log('pads');
 }
 
 async function getInstrumentsFromAPI() {
@@ -126,5 +112,3 @@ function createPads() {
     return pad;
   });
 }
-
-log('js runs until end');

@@ -1,5 +1,4 @@
 function registerServiceWorker() {
-  log('start registering service worker');
   const serviceWorkerSupported = 'serviceWorker' in navigator;
 
   if (serviceWorkerSupported) {
