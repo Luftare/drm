@@ -65,9 +65,13 @@ body {
 
 .vu-meter {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
   background: #ccc;
   overflow: hidden;
+  color: grey;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2) inset;
 }
 
