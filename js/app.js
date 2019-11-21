@@ -27,7 +27,9 @@ async function initDom() {
 }
 
 async function getInstrumentsFromAPI() {
-  const res = await fetch('/hard-coded-api/instruments.json');
+  const res = await fetch(
+    `${document.location.href}hard-coded-api/instruments.json`
+  );
   const { instruments } = await res.json();
   return instruments;
 }
