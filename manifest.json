@@ -2,7 +2,7 @@
   "name": "DRM",
   "short_name": "DRM",
   "start_url": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#444444",
   "theme_color": "#34eb9e",
   "orientation": "portrait-primary",
