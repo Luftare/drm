@@ -1,7 +1,7 @@
 {
   "name": "DRM",
   "short_name": "DRM",
-  "start_url": "index.html",
+  "start_url": "/",
   "display": "fullscreen",
   "background_color": "#444444",
   "theme_color": "#34eb9e",
