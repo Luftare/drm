@@ -12,7 +12,7 @@ self.addEventListener('activate', e => {
   e.waitUntil(removeObsoleteCaches());
 });
 
-self.addEventListener('fetch', async e => {
+self.addEventListener('fetch', e => {
   const response = shouldUseCachedApi(e)
     ? createInstrumentsResponse()
     : getCachedResponseWithFetchFallback(e);
