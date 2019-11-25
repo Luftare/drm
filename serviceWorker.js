@@ -1,5 +1,5 @@
-const STATIC_CACHE_NAME = 'static-v1';
-const DYNAMIC_CACHE_NAME = 'dynamic-v1';
+const STATIC_CACHE_NAME = 'static-v0';
+const DYNAMIC_CACHE_NAME = 'dynamic-v0';
 const retainedCacheNames = [STATIC_CACHE_NAME, DYNAMIC_CACHE_NAME];
 
 const staticAssets = ['/', '/about.html'];
@@ -24,6 +24,23 @@ const shouldUseOfflineAPI = e => {
   const isApiRequest = e.request.url.includes('/hard-coded-api/');
   const offline = !navigator.onLine;
   return offline && isApiRequest;
+};
+
+const generateAPIResponse = async e => {
+  const instruments = await getCachedInstruments();
+
+  const response = {
+    instruments,
+  };
+
+  return new Response(JSON.stringify(response));
+};
+
+const getCachedResponseWithFetchFallback = async e => {
+  const cachedResult = await caches.match(e.request);
+  if (cachedResult) return cachedResult;
+
+  return fetchAndCacheResponse(e);
 };
 
 const cacheStaticAssets = () =>
@@ -70,16 +87,6 @@ const getCachedInstruments = async () => {
   return requestUrlsToCompleteInstruments(cachedRequestUrls);
 };
 
-const generateAPIResponse = async e => {
-  const instruments = await getCachedInstruments();
-
-  const response = {
-    instruments,
-  };
-
-  return new Response(JSON.stringify(response));
-};
-
 const getCachedResponse = async e => {
   return await caches.match(e.request);
 };
@@ -89,11 +96,4 @@ const fetchAndCacheResponse = async e => {
   const cache = await caches.open(DYNAMIC_CACHE_NAME);
   cache.put(e.request.url, fetchResponse.clone());
   return fetchResponse;
-};
-
-const getCachedResponseWithFetchFallback = async e => {
-  const cachedResult = await caches.match(e.request);
-  if (cachedResult) return cachedResult;
-
-  return fetchAndCacheResponse(e);
 };
