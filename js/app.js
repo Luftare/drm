@@ -8,7 +8,11 @@ async function boot() {
   registerServiceWorker();
   const instruments = await getInstrumentsFromAPI();
   initDom(instruments);
-  selectInstrument(instruments[0]);
+
+  const defaultInstrument = instruments[0];
+  if (defaultInstrument) {
+    selectInstrument(defaultInstrument);
+  }
 }
 
 async function getInstrumentsFromAPI() {

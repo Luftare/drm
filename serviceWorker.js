@@ -2,7 +2,7 @@ const STATIC_CACHE_NAME = 'static-v1';
 const DYNAMIC_CACHE_NAME = 'dynamic-v1';
 const retainedCacheNames = [STATIC_CACHE_NAME, DYNAMIC_CACHE_NAME];
 
-const staticAssets = ['/', '/index.html', '/about.html'];
+const staticAssets = ['/', '/about.html'];
 
 self.addEventListener('install', e => {
   e.waitUntil(cacheStaticAssets());
@@ -60,7 +60,8 @@ const requestUrlsToCompleteInstruments = urls =>
     .map(urlToFileName)
     .map(fileNameToInstrumentName)
     .filter(isCompleteInstrument)
-    .filter(unique);
+    .filter(unique)
+    .filter(Boolean);
 
 const getCachedInstruments = async () => {
   const cache = await caches.open(DYNAMIC_CACHE_NAME);
