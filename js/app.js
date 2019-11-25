@@ -36,6 +36,14 @@ async function getInstrumentsFromAPI() {
 
 function selectInstrument(instrument) {
   state.currentInstrument = instrument;
+  preloadInstrument(instrument);
+}
+
+function preloadInstrument(instrument) {
+  [...Array(4)].forEach((_, index) => {
+    const src = parseSamplePathName(instrument, index);
+    new Audio(src);
+  });
 }
 
 function setVULevel(level) {
@@ -62,9 +70,11 @@ function playFile(fileName) {
 }
 
 function handlePadTrigger(index) {
-  const fileName = `audio/${state.currentInstrument}-${index}.wav`;
+  playFile(parseSamplePathName(state.currentInstrument, index));
+}
 
-  playFile(fileName);
+function parseSamplePathName(instrumentName, index) {
+  return `audio/${instrumentName}-${index}.wav`;
 }
 
 function createInstrumentOptions(instruments) {
