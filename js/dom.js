@@ -72,3 +72,11 @@ function createPads() {
     return pad;
   });
 }
+
+function showLoader() {
+  document.body.classList.add('loading');
+}
+
+function hideLoader() {
+  document.body.classList.remove('loading');
+}

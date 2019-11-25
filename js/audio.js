@@ -12,10 +12,14 @@ function handlePadTrigger(index) {
 }
 
 function preloadInstrument(instrument) {
-  [...Array(4)].forEach((_, index) => {
-    const src = parseSamplePathName(instrument, index);
-    new Audio(src);
-  });
+  return [...Array(4)].map(
+    (_, index) =>
+      new Promise(res => {
+        const src = parseSamplePathName(instrument, index);
+        const audio = new Audio(src);
+        audio.addEventListener('canplaythrough', res);
+      })
+  );
 }
 
 function parseSamplePathName(instrumentName, index) {

@@ -13,13 +13,14 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  const response = shouldUseCachedApi(e)
-    ? createInstrumentsResponse()
+  const response = shouldUseOfflineAPI(e)
+    ? generateAPIResponse(e)
     : getCachedResponseWithFetchFallback(e);
+
   e.respondWith(response);
 });
 
-const shouldUseCachedApi = e => {
+const shouldUseOfflineAPI = e => {
   const isApiRequest = e.request.url.includes('/hard-coded-api/');
   const offline = !navigator.onLine;
   return offline && isApiRequest;
@@ -68,7 +69,7 @@ const getCachedInstruments = async () => {
   return requestUrlsToCompleteInstruments(cachedRequestUrls);
 };
 
-const createInstrumentsResponse = async () => {
+const generateAPIResponse = async e => {
   const instruments = await getCachedInstruments();
 
   const response = {

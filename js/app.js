@@ -19,7 +19,10 @@ async function getInstrumentsFromAPI() {
   return instruments;
 }
 
-function selectInstrument(instrument) {
+async function selectInstrument(instrument) {
+  showLoader();
   state.currentInstrument = instrument;
-  preloadInstrument(instrument);
+  const preloadPromises = preloadInstrument(instrument);
+  await Promise.all(preloadPromises);
+  hideLoader();
 }
