@@ -1,3 +1,11 @@
 {
-  "instruments": ["acoustic", "deep", "party", "synth"]
+  "instruments": [
+    "acoustic",
+    "deep",
+    "party",
+    "piano",
+    "jazz",
+    "house",
+    "synth"
+  ]
 }

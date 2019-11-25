@@ -7,10 +7,15 @@ const dom = {
   VUHandAnimationTimeout: 0,
 };
 
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
 async function initDom(instruments) {
   createInstrumentOptions(instruments);
   setVULevel(0);
   createPads();
+  initKeyboard();
 }
 
 function setVULevel(level) {
@@ -70,6 +75,21 @@ function createPads() {
     dom.grid.appendChild(pad);
 
     return pad;
+  });
+}
+
+function initKeyboard() {
+  const bindMap = [
+    'qwert',
+    'yuiopå',
+    'asdfg', 'hjklöä'
+  ];
+
+  window.addEventListener('keydown', (e) => {
+    const keyDown = e.key.toLowerCase();
+    const index = bindMap.reduce((acc, keys, i) => keys.includes(keyDown) ? i : acc, 0);
+    handlePadTrigger(index);
+    setVULevel(1)
   });
 }
 
