@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="images/icons/icon-128.png" />
+    <title>Quadrum</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="icon" href="images/icons/icon-128.png" />
-  <title>Quadrum</title>
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <link rel="manifest" href="manifest.json" />
 
-  <link type="text/css" href="styles.css" rel="stylesheet" />
-  <link rel="manifest" href="manifest.json" />
+    <!-- iOS equivalent to "icons" @manifest.json -->
+    <link rel="apple-touch-icon" href="images/icons/icon-96.png" />
 
-  <!-- iOS equivalent to "icons" @manifest.json -->
-  <link rel="apple-touch-icon" href="images/icons/icon-96.png" />
+    <!-- iOS equivalent to "icons" @manifest.json -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
-  <!-- iOS equivalent to "icons" @manifest.json -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- iOS top bar styling -->
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
 
-  <!-- iOS top bar styling -->
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- iOS equivalent to "theme_color" @manifest.json -->
+    <meta name="theme-color" content="#34eb9e" />
 
-  <!-- iOS equivalent to "theme_color" @manifest.json -->
-  <meta name="theme-color" content="#34eb9e" />
+    <link
+      href="https://fonts.googleapis.com/css?family=VT323&display=swap"
+      rel="stylesheet"
+    />
 
-  <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.min.js"
+      defer
+    ></script>
+    <script defer src="js/registerServiceWorker.js"></script>
+    <script defer src="js/dom.js"></script>
+    <script defer src="js/audio.js"></script>
+    <script defer src="js/app.js"></script>
+  </head>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.min.js" defer></script>
-  <script defer src="js/registerServiceWorker.js"></script>
-  <script defer src="js/dom.js"></script>
-  <script defer src="js/audio.js"></script>
-  <script defer src="js/app.js"></script>
-</head>
-
-<body class="loading">
-  <noscript>JS is required.</noscript>
-  <div class="header">
-    <select class="instruments"></select>
-    <a class="vu-meter" href="about.html">
-      <span class="vu-meter__label">about</span>
-      <div class="vu-meter__hand"></div>
-    </a>
-  </div>
-  <div class="fx-grid"></div>
-  <div class="load-indicator">Loading...</div>
-</body>
-
+  <body>
+    <noscript>JS is required.</noscript>
+    <div class="header">
+      <select class="instruments"></select>
+      <a class="vu-meter" href="about.html">
+        <span class="vu-meter__label">about</span>
+        <div class="vu-meter__hand"></div>
+      </a>
+    </div>
+    <div class="fx-grid"></div>
+    <div class="load-indicator">Loading...</div>
+  </body>
 </html>
