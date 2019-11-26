@@ -25,15 +25,14 @@ async function getInstrumentsFromAPI() {
 
 async function selectInstrument(instrument) {
   state.currentInstrument = instrument;
-  const preloadPromises = preloadInstrument(instrument);
+  preloadInstrument(instrument);
 
-  dom.pads.forEach(pad => {
-    pad.classList.add('fx-grid__pad--loading');
-  });
+  // dom.pads.forEach(pad => { // Enable once workaround for safari exists
+  //   pad.classList.add('fx-grid__pad--loading');
+  // });
 
-  preloadPromises.forEach(async (promise, padIndex) => {
-    await promise;
-    console.log('loaded: ', padIndex);
-    dom.pads[padIndex].classList.remove('fx-grid__pad--loading');
-  });
+  // preloadPromises.forEach(async (promise, padIndex) => {
+  // await promise;
+  // dom.pads[padIndex].classList.remove('fx-grid__pad--loading');
+  // });
 }

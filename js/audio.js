@@ -23,5 +23,5 @@ function preloadInstrument(instrument) {
 }
 
 function parseSamplePathName(instrumentName, index) {
-  return `audio/${instrumentName}-${index}.wav`;
+  return `/audio/${instrumentName}-${index}.wav`;
 }
