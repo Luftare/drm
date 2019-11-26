@@ -54,6 +54,7 @@ function createPads() {
   dom.pads = [...Array(padCount)].map((_, padIndex) => {
     const pad = document.createElement('button');
     pad.classList.add('fx-grid__pad');
+    dom.pads[padIndex] = pad;
 
     triggerEventNames.forEach(eventName => {
       pad.addEventListener(eventName, e => {
@@ -79,24 +80,15 @@ function createPads() {
 }
 
 function initKeyboard() {
-  const bindMap = [
-    'qwert',
-    'yuiopå',
-    'asdfg', 'hjklöä'
-  ];
+  const bindMap = ['qwert', 'yuiopå', 'asdfg', 'hjklöä'];
 
-  window.addEventListener('keydown', (e) => {
+  window.addEventListener('keydown', e => {
     const keyDown = e.key.toLowerCase();
-    const index = bindMap.reduce((acc, keys, i) => keys.includes(keyDown) ? i : acc, 0);
+    const index = bindMap.reduce(
+      (acc, keys, i) => (keys.includes(keyDown) ? i : acc),
+      0
+    );
     handlePadTrigger(index);
-    setVULevel(1)
+    setVULevel(1);
   });
-}
-
-function showLoader() {
-  document.body.classList.add('loading');
-}
-
-function hideLoader() {
-  document.body.classList.remove('loading');
 }

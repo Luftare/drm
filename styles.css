@@ -63,8 +63,8 @@ body {
   transform: translate(1px, 1px);
 }
 
-.loading .fx-grid {
-  display: none;
+.fx-grid__pad--loading {
+  background: #555;
 }
 
 @keyframes flash {
@@ -74,19 +74,6 @@ body {
   100% {
     opacity: 1;
   }
-}
-
-.load-indicator {
-  font-size: 48px;
-  color: #34eb9e;
-  display: none;
-  animation: flash 600ms infinite alternate;
-}
-
-.loading .load-indicator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .vu-meter {
