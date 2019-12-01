@@ -12,6 +12,8 @@ function clamp(value, min, max) {
 }
 
 async function initDom(instruments) {
+  window.addEventListener('resize', handleResize);
+  handleResize();
   createInstrumentOptions(instruments);
   setVULevel(0);
   createPads();
@@ -91,4 +93,9 @@ function initKeyboard() {
     handlePadTrigger(index);
     setVULevel(1);
   });
+}
+
+function handleResize() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
