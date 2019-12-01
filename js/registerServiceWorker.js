@@ -1,10 +1,8 @@
-function registerServiceWorker() {
+async function registerServiceWorker() {
   const serviceWorkerSupported = 'serviceWorker' in navigator;
 
   if (serviceWorkerSupported) {
-    navigator.serviceWorker
-      .register('serviceWorker.js')
-      .then(reg => console.log('service worker registered'))
-      .catch(err => console.log('service worker not registered', err));
+    const registration = await navigator.serviceWorker.register('serviceWorker.js');
+    registration.update(); // Check for service worker changes immediately (skip 24h wait)
   }
 }
