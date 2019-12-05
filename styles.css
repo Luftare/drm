@@ -1,7 +1,11 @@
+:root {
+  --vh: 1vh;
+}
+
 * {
   outline: none;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
   user-select: none;
   font-family: sans-serif;
   font-weight: 200;
@@ -22,6 +26,7 @@ body {
   background-color: #444;
   grid-template-rows: 60px auto;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .header {
